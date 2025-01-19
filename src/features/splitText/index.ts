@@ -1,0 +1,1 @@
+export { default as SplitTextView } from './SplitTextView.vue'
