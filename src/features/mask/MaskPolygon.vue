@@ -13,6 +13,10 @@ import { computed, onMounted, ref } from 'vue'
 import genesis from '@/assets/video/genesis.webp'
 import type { NonEmptyArray } from '@/utils'
 
+const props = defineProps<{
+  animationDelay: number
+}>()
+
 type Point = { x: number; y: number }
 
 class Polygon {
@@ -143,7 +147,7 @@ onMounted(() => {
         ms: 200,
       },
     ])
-  }, 2000)
+  }, props.animationDelay)
 })
 </script>
 

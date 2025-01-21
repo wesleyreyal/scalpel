@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { SplitTextView, LandingView, MaskView } from '@/features'
+import {MouseGalleryView} from '@/features'
 
 export const Routes = {
   landing: 'landing',
   splitText: 'split-text',
   maskPolygon: 'mask-polygon',
+  MouseGallery: 'mouse-gallery',
 }
 
 const router = createRouter({
@@ -25,6 +27,11 @@ const router = createRouter({
       path: '/mask-polygon',
       name: Routes.maskPolygon,
       component: MaskView,
+    },
+    {
+      path: '/mouse-gallery',
+      name: Routes.MouseGallery,
+      component: MouseGalleryView,
     },
     {
       path: '/:pathMatch(.*)*',

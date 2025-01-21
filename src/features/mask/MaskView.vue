@@ -1,6 +1,6 @@
 <template>
   <DefaultPage class="mask-view">
-    <MaskPolygon />
+    <MaskPolygon :animation-delay="2000" />
   </DefaultPage>
 </template>
 
