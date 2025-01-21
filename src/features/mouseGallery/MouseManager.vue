@@ -6,24 +6,23 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, useTemplateRef } from 'vue'
+import { onMounted, onUnmounted, useTemplateRef, watch } from 'vue'
 import { useMouseEvent, type MousePosition } from './useMouseEvent'
 
 const mouseGallery = useTemplateRef<HTMLDivElement>('mouse-manager')
 const mouse = defineModel<MousePosition>({ required: true })
 
+const mouseEvent = useMouseEvent(mouse)
 onMounted(() => {
   if (!mouseGallery.value) throw new Error('No mouse gallery found')
-  const mouseEvent = useMouseEvent()
 
   mouseGallery.value.addEventListener('mousemove', mouseEvent.updatePosition)
+})
 
-  onUnmounted(() => {
-    mouseGallery.value?.removeEventListener(
-      'mousemove',
-      mouseEvent.updatePosition,
-    )
-  })
+onUnmounted(() => {
+  if (!mouseGallery.value) throw new Error('No mouse gallery found')
+
+  mouseGallery.value.removeEventListener('mousemove', mouseEvent.updatePosition)
 })
 </script>
 

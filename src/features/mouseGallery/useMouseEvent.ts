@@ -1,13 +1,10 @@
-import { ref } from 'vue'
+import { ref, type ModelRef } from 'vue'
 
 export type MousePosition = { x: number; y: number }
 
-export function useMouseEvent() {
-  const mouse = ref<MousePosition>({ x: 0, y: 0 })
-
+export function useMouseEvent(mouse: ModelRef<MousePosition>) {
   const updatePosition = (event: MouseEvent) => {
     mouse.value = { x: event.clientX, y: event.clientY }
-    console.log(mouse.value)
   }
 
   return { mouse, updatePosition }
